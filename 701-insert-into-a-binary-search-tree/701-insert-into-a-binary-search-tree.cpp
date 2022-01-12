@@ -14,32 +14,24 @@ public:
     
     
     TreeNode* insertIntoBST(TreeNode* root, int val) {
-        TreeNode* temp=new TreeNode(val);
-    if(root==NULL){
-        return temp;
-    }
-    TreeNode* curr=root;
-    while(curr){
-        if(curr->val<=val){
-            if(curr->right!=NULL){
-                curr=curr->right;
-            }
-            else{
-                curr->right=temp;
-                break;
-            }
+      
+        if(!root)
+        {
+            TreeNode* newNode = new TreeNode(val);
+            return newNode;
         }
-        else{
-            if(curr->left!=NULL){
-                curr=curr->left;
-            }
-            else{
-                curr->left=temp;
-                break;
-            }
+        
+        if(val>root->val)
+        {
+            root->right = insertIntoBST(root->right,val);
         }
-    }
-    return root;
+        else
+        {
+            root->left  = insertIntoBST(root->left,val);
+        }
+        
+        return root;
+        
         
     }
 };
