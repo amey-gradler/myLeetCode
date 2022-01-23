@@ -3,20 +3,16 @@ public:
     int rows;
     int cols;
 
-    int dfs(int i,int j,vector<vector<int>> &grid,int a=0)
+    int dfs(int i,int j,vector<vector<int>> &grid)
     {
         if(i<0 || j<0 || i==rows || j==cols)
             return 0;
         if(grid[i][j]==0)
             return 0;
         grid[i][j]=0;
-        a++;
-        a+=dfs(i+1,j,grid);
-        a+=dfs(i-1,j,grid);
-        a+=dfs(i,j+1,grid);
-        a+=dfs(i,j-1,grid);
+        return 1+dfs(i+1,j,grid)+dfs(i-1,j,grid) +dfs(i,j+1,grid)+dfs(i,j-1,grid);
 
-        return a;
+        
     }
     
     
