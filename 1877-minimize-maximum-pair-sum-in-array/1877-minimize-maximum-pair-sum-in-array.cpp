@@ -1,13 +1,36 @@
 class Solution {
 public:
     int minPairSum(vector<int>& nums) {
-        sort(nums.begin(),nums.end());
-        int n=nums.size();
+      
+        vector<int> arr(100001,0);
+        
+        for(auto i : nums)
+            arr[i]++;
+        int l = 0;
+        int r = 100000;
         int ans=INT_MIN;
-        for(int i=0;i<n/2;i++)
+        while(l<=r)
         {
-            ans = max(ans,nums[i]+nums[n-i-1]);
+            if(arr[l]==0)
+            {
+                l++;
+                continue;
+            }
+            if(arr[r]==0)
+            {
+                r--;
+                continue;
+            }
+            
+            if(arr[l]!=0 && arr[r]!=0)
+            {
+                ans = max(ans,l+r);
+                arr[l]--;
+                arr[r]--;
+            }
+            
         }
         return ans;
+        
     }
 };
