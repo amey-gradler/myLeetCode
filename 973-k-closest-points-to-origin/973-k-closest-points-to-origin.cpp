@@ -1,10 +1,10 @@
-typedef pair<double,pair<int,int>> pdi;
+typedef pair<int,pair<int,int>> pdi;
 class Solution {
 public:
     
-    double dist(int x, int y)
+    int dist(int x, int y)
     {
-        return sqrt((x*x)+(y*y));
+        return ((x*x)+(y*y));
     }
     
     vector<vector<int>> kClosest(vector<vector<int>>& points, int k) {
