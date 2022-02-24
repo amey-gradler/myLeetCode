@@ -19,6 +19,7 @@ public:
         if(root->left==NULL && root->right==NULL)
             return 1;
         
+        //Solution 1 is beter
 //         if(root->left==NULL && root->right!=NULL)
 //             return 1+minDepth(root->right);
         
@@ -26,6 +27,8 @@ public:
 //             return 1+minDepth(root->left);
         
 //         return 1+min(minDepth(root->left),minDepth(root->right));
+        
+        //Solution 2
         int lh=INT_MAX;
         int rh=INT_MAX;
         if(root->left)
