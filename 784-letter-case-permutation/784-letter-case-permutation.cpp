@@ -9,7 +9,7 @@ public:
             return;
         }
         char ci=ip[i];
-        if(isdigit(ci))
+        if(ci>='0' && ci<='9')
         {
             return solve(n,ip,op+ci,i+1,ans);
         }
