@@ -1,26 +1,19 @@
 class Solution {
 public:
-    
-    int solve(int idx,vector<int> &nums,vector<int> &t)
-    {
-        if(idx>=nums.size())
-            return 0;
-        if(t[idx]!=-1)
-            return t[idx];
-        
-        
-        return t[idx] =max(nums[idx] + solve(idx+2,nums,t), solve(idx+1,nums,t));
-        
-    }
-    
     int rob(vector<int>& nums) {
+        
         int n=nums.size();
-        if(n==1)
-            return nums[0];
+        if(n==0)
+            return 0;
+        vector<int> t(n+1);
+        t[0]=0;
+        t[1]=nums[0];
         
-        vector<int> t(n+1,-1);
+        for(int i=1;i<n;i++)
+        {
+            t[i+1]=max(nums[i]+t[i-1] , t[i]);
+        }
+        return t[n];
         
-        int ans=solve(0,nums,t);
-        return ans;
     }
 };
