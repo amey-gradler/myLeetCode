@@ -9,9 +9,9 @@ public:
         t[0]=0;
         t[1]=nums[0];
         
-        for(int i=1;i<n;i++)
+        for(int i=2;i<=n;i++)
         {
-            t[i+1]=max(nums[i]+t[i-1] , t[i]);
+            t[i]=max(nums[i-1]+t[i-2] , t[i-1]);
         }
         return t[n];
         
