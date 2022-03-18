@@ -14,20 +14,18 @@ public:
         
         for(int i = 0 ; i<n ;i++)
         {
+             v[s[i]-'a']--;
             if( visited[ s[i] - 'a'] )
             {
-                v[s[i]-'a']--;
                 continue;
-
             }
                             
             if(!st.empty())
             {
-               // char ch  = st.top();
+             
                 while( !st.empty() && s[i]<st.top() && v[st.top()-'a']>0)
                 {
                     visited[st.top()-'a'] = 0;
-                    // v[st.top() - 'a'] ++;
                     st.pop();
                 }
                 st.push(s[i]);
@@ -36,7 +34,6 @@ public:
                 st.push(s[i]);
             }
             visited[ s[i] - 'a'] = 1;
-            v[s[i]-'a']--;
         }
         
         string s2 = "";
