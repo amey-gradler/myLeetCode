@@ -15,15 +15,30 @@ public:
         
     }
     
-    int minimumTotal(vector<vector<int>>& triangle) {
+    int minimumTotal(vector<vector<int>>& t) {
         
-        int n = triangle.size();
+        int n = t.size();
         // int n = triangle[m-1].size();
         
         vector<vector<int>> dp (n,vector<int> (n,INT_MAX));
         
-        return solve(0,0,triangle,dp);
-
+        //tabulation
+        for(int j=0;j<n;j++)
+            dp[n-1][j] = t[n-1][j]; 
+        
+        for(int i=n-2;i>=0;i--)
+        {
+            for(int j=i;j>=0;j--)
+            {
+                int d = dp[i+1][j];
+                int dg = dp[i+1][j+1];
+                
+                dp[i][j] = t[i][j] + min(d,dg);
+            }
+        }
+        
+        
+        return dp[0][0];
         
     }
 };
