@@ -20,25 +20,27 @@ public:
         int n = t.size();
         // int n = triangle[m-1].size();
         
-        vector<vector<int>> dp (n,vector<int> (n,INT_MAX));
+        // vector<vector<int>> dp (n,vector<int> (n,INT_MAX));
         
-        //tabulation
+        vector<int> next(n,0);
         for(int j=0;j<n;j++)
-            dp[n-1][j] = t[n-1][j]; 
-        
+            next[j] = t[n-1][j]; 
+              
         for(int i=n-2;i>=0;i--)
         {
+            vector<int> cur(n,0);
             for(int j=i;j>=0;j--)
             {
-                int d = dp[i+1][j];
-                int dg = dp[i+1][j+1];
+                int d = next[j];
+                int dg = next[j+1];
                 
-                dp[i][j] = t[i][j] + min(d,dg);
+                cur[j] = t[i][j] + min(d,dg);
             }
+            next=cur;
         }
         
         
-        return dp[0][0];
+        return next[0];
         
     }
 };
