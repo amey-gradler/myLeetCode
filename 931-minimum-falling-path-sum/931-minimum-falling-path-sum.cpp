@@ -46,37 +46,72 @@ public:
         
         //tabulation
         
-        for(int j=0;j<n;j++)
-        {
-            dp[n-1][j] = m[n-1][j]; 
-        }
+//         for(int j=0;j<n;j++)
+//         {
+//             dp[n-1][j] = m[n-1][j]; 
+//         }
         
         
-        for(int i=n-2;i>=0;i--)
-        {
-            for(int j=n-1;j>=0;j--)
+//         for(int i=n-2;i>=0;i--)
+//         {
+//             for(int j=n-1;j>=0;j--)
+//             {
+//                 int down=INT_MAX,ld=INT_MAX,rd=INT_MAX;
+                
+//                 //down;
+//                 down =  dp[i+1][j];
+//                 //ld
+//                 if(j>0)
+//                     ld= dp[i+1][j-1];
+//                 //rd
+//                 if(j<n-1)
+//                     rd = dp[i+1][j+1];
+                
+//                 dp[i][j] = m[i][j] + min(down,min(ld,rd));
+                
+//             }
+//         }
+        
+//         for(int j=0;j<n;j++)
+//         {
+//             ans=min(ans,dp[0][j]);
+//         }
+//         return ans;
+        
+            //space optimization
+        
+            vector<int> next (n,0);
+            for(int j=0;j<n;j++)
             {
-                int down=INT_MAX,ld=INT_MAX,rd=INT_MAX;
-                
-                //down;
-                down =  dp[i+1][j];
-                //ld
-                if(j>0)
-                    ld= dp[i+1][j-1];
-                //rd
-                if(j<n-1)
-                    rd = dp[i+1][j+1];
-                
-                dp[i][j] = m[i][j] + min(down,min(ld,rd));
-                
+                next[j] = m[n-1][j]; 
             }
-        }
         
-        for(int j=0;j<n;j++)
-        {
-            ans=min(ans,dp[0][j]);
-        }
+            for(int i=n-2;i>=0;i--)
+            {   
+                vector<int> cur(n,0);
+                for(int j=n-1;j>=0;j--)
+                {
+                    int down=INT_MAX,ld=INT_MAX,rd=INT_MAX;
+                
+                    //down;
+                    down =  next[j];
+//                 //ld
+                    if(j>0)
+                        ld= next[j-1];
+                // rd
+                    if(j<n-1)
+                        rd = next[j+1];
+                
+                cur[j] = m[i][j] + min(down,min(ld,rd));
+                }
+                next=cur;
+            }
+        
+            for(int j=0;j<n;j++)
+            {
+                ans=min(ans,next[j]);
+            }
         return ans;
-        
+            
     }
 };
