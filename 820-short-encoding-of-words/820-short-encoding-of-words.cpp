@@ -22,47 +22,14 @@ public:
 //         cout<<endl;
         
         string prev="";
-        int cnt=0;
         for(int i=0;i<n;i++)
         {
-          // size_t found = prev.find(words[i]);
-          //  if(found!=string::npos)
-          //  {    
-          //      long long int j=found+words[i].length();
-          //      // cout<<j<<" "<<prev<<endl;
-          //      if(prev[j]=='#')
-          //          continue;
-          //      else{
-          //          prev+=words[i]+'#';
-          //      }
-          //  }
-          //   else{
-          //       prev+=words[i]+'#';
-          //   }
-            
-            int begin=0;
-            while(begin<prev.length())
-            {
-                size_t found = prev.find(words[i],begin);
-                if(found!=string::npos)
-               {    
-                   long long int j=found+words[i].length();
-                   cout<<j<<" "<<prev<<endl;
-                   if(prev[j]=='#')
-                       break;
-                    else
-                        begin=found+1;
-               }
-                else{
-                    prev+=words[i]+'#';
-                    break;
-                }
-            }
-            
-            if(begin>=prev.length())
-                 prev+=words[i]+'#';
-            
-            
+          
+            int found = prev.find(words[i]+'#');
+            if(found!=-1)
+                continue;
+            else
+                prev+=words[i]+'#';
         }
         
         return prev.length();
