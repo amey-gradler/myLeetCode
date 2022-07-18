@@ -29,10 +29,10 @@ public:
         v=findParent(v);
         if(u==v)
         {
-            redundant++;
+            // redundant++;
         }
         else{
-                  number--;
+                  number++;
         }
         
         if(rank[u]<rank[v])
@@ -53,7 +53,8 @@ public:
     
     int makeConnected(int n, vector<vector<int>>& connections) {
         
-        number=n;
+        if(connections.size()<n-1) return -1;
+        number=0;
         redundant=0;
         makeSet(n);
         for(auto i : connections)
@@ -63,9 +64,9 @@ public:
         
         
         cout<<redundant<<" "<<number;
-        if(number-1 <= redundant)
-            return number-1;
-        return -1;
+        // if(number <= redundant)
+            // return number;
+        return n-1-number;
         
     }
 };
