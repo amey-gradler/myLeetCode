@@ -30,6 +30,7 @@ public:
         if(u==v)
         {
             // redundant++;
+            return;
         }
         else{
                   number++;
