@@ -15,7 +15,7 @@ public:
         if(dp[i][j]!=INT_MAX) return dp[i][j];
         //rec
         
-        if(s1[i]==s2[j]) return 0+solve(s1,s2,i-1,j-1,dp);
+        if(s1[i]==s2[j]) return dp[i][j] =  0+solve(s1,s2,i-1,j-1,dp);
         
         int ins = 1 + solve(s1,s2,i,j-1,dp);
         int del = 1 + solve(s1,s2,i-1,j,dp);
