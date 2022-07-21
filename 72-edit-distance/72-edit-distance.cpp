@@ -1,7 +1,7 @@
 class Solution {
 public:
     
-    int solve(string s1,string s2, int i,int j,vector<vector<int>>& dp)
+    int solve(string &s1,string &s2, int i,int j,vector<vector<int>>& dp)
     {
         //base case
         //s1 is exhausted
